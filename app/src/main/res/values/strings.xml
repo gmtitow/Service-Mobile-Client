@@ -1,0 +1,289 @@
+<resources>
+    <string name="app_name">Подработка</string>
+
+    <string name="text_ok">ОК</string>
+    <string name="text_cancel">Отмена</string>
+    <string name="search">Поиск</string>
+    <string name="clear_search">Очистить</string>
+
+    <string name="fio">%1$s %2$s %3$s</string>
+    <string name="text_title_years">Возраст</string>
+    <string name="years">%1$d лет</string>
+    <plurals name="years_counts">
+        <item quantity="one">%1$d год</item>
+        <item quantity="two">%1$d года</item>
+
+        <item quantity="few">%1$d года</item>
+        <item quantity="many">%1$d лет</item>
+        <item quantity="other">%1$d лет</item>
+    </plurals>
+
+    <string name="back">Назад</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="company_name">Service</string>
+    <string name="company_adresess">Адреса</string>
+    <string name="company_about">О компании</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <string name="login">Авторизация</string>
+    <string name="login_enter">Вход</string>
+    <string name="login_exit">Выйти</string>
+    <string name="login_register">Зарегистрироваться</string>
+
+    <!--Пункты меню-->
+    <string name="authorization">Вход/Регистрация</string>
+    <string name="registration">Регистрация</string>
+    <string name="other">Прочее</string>
+    <string name="cabinet">Личный кабинет</string>
+
+    <string name="selected_offers">Выбранные предложения</string>
+    <string name="executing_tasks">Выполняемые задания</string>
+
+    <!--табы в профиле-->
+    <string name="profile_view">Профиль</string>
+    <string name="profile_places">Местоположения</string>
+    <string name="profile_categories">Категории</string>
+    <string name="profile_settings">Настройки</string>
+
+    <string name="profile_photo">Фотография</string>
+    <string name="text_profile_name">Имя:</string>
+    <string name="text_profile_lastname">Фамилия:</string>
+    <string name="text_profile_patronymic">Отчество:</string>
+    <string name="text_profile_birthday">Дата рождения:</string>
+    <string name="text_profile_email">email:</string>
+    <string name="text_profile_phone">Телефон:</string>
+    <string name="text_profile_male">Пол:</string>
+    <string name="text_profile_address">Адрес:</string>
+    <string name="text_profile_about">О себе</string>
+    <string name="text_reviews">Отзывы</string>
+    <string name="text_profile_raitingExecutor">Рейтинг исполнителя:</string>
+    <string name="text_profile_raitingClient">Рейтинг заказчика:</string>
+
+    <string name="button_change_profile">Редактировать</string>
+    <string name="button_change_phone">Изменить телефон</string>
+    <string name="button_change_email">Изменить email</string>
+    <string name="button_change_password">Изменить пароль</string>
+    <string name="button_change_settings">Редактировать</string>
+
+    <string name="button_change_photo">Изменить фотографию</string>
+    <string name="button_save_changes">Сохранить изменения</string>
+    <string name="button_dont_save_changes">Не сохранять изменения</string>
+    <string name="profile_change_success">Данные профиля успешно изменены</string>
+    <string name="profile_change_error">Сервер отклонил изменения данных</string>
+    <string name="profile_change_connection_error">Проблемы с соединением</string>
+    <string name="profile_change_photo_error">Не удалось загрузить фотографию на сервер</string>
+
+    <string name="text_profile_tell_about">О себе:</string>
+
+    <string name="text_profile_review_empty">Нет ни одного отзыва</string>
+
+    <string name="photo_dialog_gallery">Галерея</string>
+    <string name="photo_dialog_camera">Камера</string>
+
+    <string name="edit_place_decription">Описание</string>
+    <string name="button_place_more">Подробнее</string>
+    <string name="button_place_add">Добавить</string>
+    <string name="button_place_cancel">Отмена</string>
+
+    <string name="switch_email">Получать уведомления на email</string>
+    <string name="switch_sms">Получать SMS-уведомления</string>
+    <string name="switch_push">Получать PUSH-уведомления</string>
+
+    <string name="tasks">Задания</string>
+
+    <string name="task_name_title">Название:</string>
+    <string name="task_category_title">Категория:</string>
+    <string name="task_status_title">Статус:</string>
+
+
+    <string name="tender_duration_title">Тендер будет длиться</string>
+    <string name="tender_duration">с %1$s по %2$s</string>
+
+
+    <string name="tasks_list_empty">Список заданий пуст</string>
+
+    <string name="task_description_title">Описание:</string>
+    <string name="task_deadline_title">Завершение: </string>
+    <string name="task_price_title">Цена: </string>
+    <string name="task_address_title">Адрес: </string>
+    <string name="task_choose_on_map">Указать на карте</string>
+    <string name="task_further">Далее</string>
+
+    <string name="tender_date_start">Дата начала тендера: </string>
+    <string name="tender_date_end">Тендер завершается: </string>
+    <string name="task_add">Создать задание</string>
+    <string name="task_created">Задание успешно создано</string>
+    <string name="tender_add">Создать тендер</string>
+    <string name="tender_created">Тендер успешно создан</string>
+    <string name="task_changed">Задание успешно изменено</string>
+
+    <string name="tender_list_empty">Список тендеров пуст</string>
+
+    <string name="tender_go_to_map">На карте</string>
+
+    <string name="task_deadline_error">Дата завершения задания не должна быть "в прошлом"</string>
+
+    <string name="task_date_end_error_deadline">Тендер должен завершиться до завершения задания (иначе в нем нет смысла)</string>
+    <string name="task_date_end_error_today">Дата завершения тендера не должна быть "в прошлом"</string>
+
+    <string name="task_delete">Удалить задание</string>
+
+    <string name="tender">Тендеры</string>
+
+    <string name="task_task_layout">О задании</string>
+    <string name="task_tender_isnt_created">Тендер не создан</string>
+    <string name="task_offers">Предложения (%1s)</string>
+    <string name="task_change">Изменить задание</string>
+    <string name="tender_delete">Удалить тендер</string>
+    <string name="task_success_deleted">Задание было успешно удалено</string>
+    <string name="task_fail_delete">Не удалось удалить задание</string>
+    <string name="task_dialog_delete_title">Удаление задания</string>
+    <string name="task_dialog_delete_text">Вы действительно хотите удалить задание? Восстановить данные не удастся.</string>
+    <string name="tender_success_deleted">Тендер был успешно удален</string>
+    <string name="tender_fail_delete">Не удалось удалить тендер</string>
+    <string name="text_tender_participation">Участвовать в тендере</string>
+    <string name="text_tender_go_to_task">Перейти к заданию</string>
+
+
+    <string name="tender_task_deadline_title">Дата завершения задания:</string>
+
+
+    <string name="login_ok">Все нормально, вы авторизованы.</string>
+    <string name="lost_connection">Нет соединения.</string>
+    <string name="any_wrong">Что-то пошло не так</string>
+    <string name="login_failed">Неверные логин/пароль.</string>
+
+    <string name="text_login"><u>Логин:</u></string>
+    <string name="text_password"><u>Пароль:</u></string>
+
+    <string name="text_register_general"><u>Основные данные:</u></string>
+    <string name="text_register_name"><font color="red">*</font>Имя:</string>
+    <string name="text_register_lastname"><font color="red">*</font>Фамилия:</string>
+    <string name="text_register_email"><font color="red">*</font>email:</string>
+    <string name="text_register_telephone"><font color="red">*</font>Телефон:</string>
+    <string name="text_register_address"><u>Ваш адрес:</u></string>
+    <string name="text_register_address_1"><font color="red">*</font>Адрес:</string>
+    <string name="text_register_city"><font color="red">*</font>Город:</string>
+    <string name="text_register_country"><font color="red">*</font>Страна:</string>
+    <string name="text_register_zone"><font color="red">*</font>Регион:</string>
+    <string name="text_register_passwords"><u>Ваш пароль:</u></string>
+    <string name="text_register_password"><font color="red">*</font>Пароль:</string>
+    <string name="text_register_confirm"><font color="red">*</font>Повторите пароль:</string>
+    <string name="text_register_male"><font color="red">*</font>Пол:</string>
+
+
+    <string name="text_register_success">Вы успешно зарегистрировались.</string>
+    <string name="text_register_error">Часть полей заполнены неверно.</string>
+    <string name="text_register_already_exists">Такой email или телефон уже занят.</string>
+    <string name="text_register_local_error">Вы заполнили не все поля или не так как надо.</string>
+
+    <string name="text_INFO"><u>Информация:</u></string>
+
+    <!--Предложения -->
+    <string name="offers">Предложения</string>
+
+    <string name="offer_download_error">Не удалось загрузить предложения</string>
+    <string name="offers_list_empty">Список предложений пуст</string>
+    <string name="offers_select_executor">Выбрать исполнителя</string>
+
+    <string name="offer_description_title">Описание к предложению</string>
+    <string name="offer_base_conditions">Исходные условия задания</string>
+    <string name="offer_conditions">Ваше предложение</string>
+
+    <string name="toast_offer_select_error">Не удалось выбрать предложение</string>
+
+
+    <string name="offer_go_to_tender">К тендеру</string>
+    <string name="offer_go_to_dialog">К диалогу</string>
+
+    <string name="text_offer_deadline">Завершение</string>
+
+    <string name="offer_withdraw">Отозвать предложение</string>
+
+    <string name="offer_button_add">Оставить предложение</string>
+    <string name="offer_add_toast_success">Предложение успешно добавлено</string>
+
+    <string name="offer_success_deleted">Предложение было отозвано</string>
+    <string name="offer_fail_delete">Не удалось отозвать предложение</string>
+
+    <!-- Модуль координации-->
+    <string name="messages_dont_loaded">Не удалось загрузить сообщения</string>
+    <string name="messages_not_sent">Не удалось отправить сообщение</string>
+    <string name="item_task_complete">Отметить задание как выполненное</string>
+    <string name="item_task_finish">Завершить задание без выполнения</string>
+
+    <string name="send_message">Отправить</string>
+    <string name="write_review">Написать отзыв</string>
+
+    <string name="toast_task_not_completed">Не удалось завершить задание, попробуйте еще раз.</string>
+
+    <!--review add-->
+    <string name="please_put_rating">Оцените %1$s по 5-бальной шкале:</string>
+    <string name="please_write_review">И напишите, пожалуйста, отзыв:</string>
+    <string name="send_review">Отправить отзыв:</string>
+
+    <string name="toast_problem_with_adding">Не удалось добавить отзыв, что-то не так.</string>
+
+    <!--Заголовки -->
+    <string name="title_register">Регистрация</string>
+    <string name="title_authorization">Авторизация</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_profile_change">Редактирование профиля</string>
+    <string name="title_reviews">Отзывы</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_settings_changing">Сохранение...</string>
+    <string name="title_tasks">Мои задания</string>
+
+    <string name="title_task_deleting">Удаление задания&#8230;</string>
+    <string name="title_tender_deleting">Удаление тендера&#8230;</string>
+    <string name="title_task_change">Редактирование задания</string>
+    <string name="title_task_add">Создание задания</string>
+    <string name="title_task_creating">Создание задания&#8230;</string>
+
+    <string name="title_tenders">Тендеры</string>
+    <string name="title_tender">Тендер</string>
+    <string name="title_task_location">Укажите местоположение</string>
+    <string name="title_location">Местоположение</string>
+    <string name="title_tender_add">Создание тендера</string>
+    <string name="title_tender_creating">Создание тендера&#8230;</string>
+    <string name="title_offers">Мои предложения</string>
+    <string name="title_offers_for_task">Оставленные предложения</string>
+    <string name="title_offer_for_task">Оставленное предложение</string>
+    <string name="title_offer_selection_in_progress">Загрузка...</string>
+    <string name="title_offers_add">Создание предложения</string>
+    <string name="title_offers_add_in_progress">Создание предложения...</string>
+    <string name="title_offer">Ваше предложение</string>
+    <string name="title_offer_withdraw">Отзыв предложения...</string>
+    <string name="title_chat">Сообщения</string>
+    <string name="title_messages_downloads">Загрузка...</string>
+
+
+    <string name="notify_address_not_found">Не удалось получить адрес в данной точке</string>
+    <string name="notify_point_not_found">Такой адрес на найден</string>
+
+    <string name="map">Карта</string>
+    <string name="list">Список</string>
+
+    <!-- -->
+    <string name="reamp_common_error_title">Ошибка</string>
+    <string name="reamp_common_error_message">Произошла ошибка при обновлении состояния экрана</string>
+
+    <!--mapkit-->
+    <string name="not_found_error_message">Not found</string>
+    <string name="network_error_message">Network error</string>
+    <string name="remote_error_message">Remote server error</string>
+    <string name="unknown_error_message">Unknown error</string>
+
+    <!--FCM-->
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">News</string>
+</resources>

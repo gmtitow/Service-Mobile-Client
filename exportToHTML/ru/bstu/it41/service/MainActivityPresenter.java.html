@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>MainActivityPresenter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivityPresenter.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">com.activeandroid.ActiveAndroid; 
+</span><span class="s0">import </span><span class="s1">com.activeandroid.query.Delete; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+ 
+</span><span class="s0">import </span><span class="s1">etr.android.reamp.mvp.ReampPresenter; 
+</span><span class="s0">import </span><span class="s1">retrofit2.Call; 
+</span><span class="s0">import </span><span class="s1">retrofit2.Callback; 
+</span><span class="s0">import </span><span class="s1">retrofit2.Response; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.Category; 
+ 
+</span><span class="s2">/** 
+ * Created by Герман on 11.11.2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivityPresenter </span><span class="s0">extends </span><span class="s1">ReampPresenter&lt;MainActivityState&gt; { 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onPresenterCreated() { 
+        </span><span class="s0">super</span><span class="s1">.onPresenterCreated(); 
+        getStateModel().message=</span><span class="s3">&quot;&quot;</span><span class="s1">; 
+        </span><span class="s2">//getStateModel().setAuthorized(false);</span><span class="s1"> 
+        sendStateModel(); 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">onAuthorizedChanged(Boolean auth){ 
+        getStateModel().setAuthorized(auth); 
+        sendStateModel(); 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">exit(){ 
+ 
+        serviceAPI itableApi= Controller.getStaticAPI(); 
+ 
+            itableApi.logout(</span><span class="s4">1</span><span class="s1">).enqueue(</span><span class="s0">new </span><span class="s1">Callback&lt;String&gt;() { 
+                @Override 
+                </span><span class="s0">public void </span><span class="s1">onResponse(Call&lt;String&gt; call, Response&lt;String&gt; response) { 
+                    </span><span class="s0">try </span><span class="s1">{ 
+                        </span><span class="s2">//getStateModel().setAuthorized(false);</span><span class="s1"> 
+ 
+                        getStateModel().message = response.body(); 
+                        </span><span class="s0">if</span><span class="s1">(getStateModel().message.equals(</span><span class="s3">&quot;success&quot;</span><span class="s1">)){ 
+                            getStateModel().message = </span><span class="s3">&quot;Вы разлогинились.&quot;</span><span class="s1">; 
+                        } 
+ 
+                        sendStateModel(); 
+                    }</span><span class="s0">catch </span><span class="s1">(Exception e){ 
+                        e.printStackTrace(); 
+                    } 
+                } 
+ 
+                @Override 
+                </span><span class="s0">public void </span><span class="s1">onFailure(Call&lt;String&gt; call, Throwable t) { 
+                    getStateModel().message = t.getMessage(); 
+                    sendStateModel(); 
+                } 
+            }); 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">downloadCategories(){ 
+        serviceAPI itableAPI = Controller.getGsonAPI(); 
+        getStateModel().setCategoryDownloadInProgress(</span><span class="s0">true</span><span class="s1">); 
+        itableAPI.getCategories().enqueue(</span><span class="s0">new </span><span class="s1">Callback&lt;List&lt;Category&gt;&gt;() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onResponse(Call&lt;List&lt;Category&gt;&gt; call, Response&lt;List&lt;Category&gt;&gt; response) { 
+                </span><span class="s0">try </span><span class="s1">{ 
+                    </span><span class="s2">//getStateModel().setCategories(response.body());</span><span class="s1"> 
+                    </span><span class="s0">new </span><span class="s1">Delete().from(Category.</span><span class="s0">class</span><span class="s1">).execute(); 
+                    ActiveAndroid.beginTransaction(); 
+                    </span><span class="s0">try </span><span class="s1">{ 
+                        </span><span class="s0">for </span><span class="s1">(Category category : response.body()) { 
+                            category.save(); 
+                        } 
+                        ActiveAndroid.setTransactionSuccessful(); 
+                    }</span><span class="s0">catch </span><span class="s1">(Exception e){ 
+                        e.printStackTrace(); 
+                    } 
+                    </span><span class="s0">finally </span><span class="s1">{ 
+                        ActiveAndroid.endTransaction(); 
+                    } 
+ 
+                    getStateModel().setCategoryDownloaded(</span><span class="s0">true</span><span class="s1">); 
+                    getStateModel().setCategoryDownloadInProgress(</span><span class="s0">false</span><span class="s1">); 
+                }</span><span class="s0">catch </span><span class="s1">(Exception e){ 
+                    e.printStackTrace(); 
+                } 
+            } 
+ 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onFailure(Call&lt;List&lt;Category&gt;&gt; call, Throwable t) { 
+                getStateModel().setCategoryDownloadInProgress(</span><span class="s0">false</span><span class="s1">); 
+            } 
+        }); 
+    } 
+} 
+</span></pre>
+</body>
+</html>

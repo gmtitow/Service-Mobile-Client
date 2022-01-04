@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_menu">
+
+    <item
+        android:title="@string/authorization">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_enter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:title="@string/login_enter" />
+                <item
+                    android:id="@+id/nav_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:title="@string/registration" />
+                <item
+                    android:id="@+id/nav_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:title="@string/login_exit" />
+            </group>
+        </menu>
+    </item>
+
+            <item
+                android:id="@+id/nav_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/profile_view" />
+            <item
+                android:id="@+id/nav_tasks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/tasks" />
+            <item
+                android:id="@+id/nav_offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/offers" />
+
+
+            <item
+                android:id="@+id/nav_selected_offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/selected_offers" />
+
+            <item
+                android:id="@+id/nav_executed_tasks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/executing_tasks" />
+
+            <item
+                android:id="@+id/nav_tenders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:title="@string/tender" />
+
+</menu>

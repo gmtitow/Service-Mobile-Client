@@ -1,0 +1,49 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        tools:context="ru.bstu.it41.service.profile.ProfileFragment">
+
+        <TextView
+            style="@style/text_low_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "@string/text_profile_tell_about"/>
+
+        <EditText
+            android:id="@+id/edit_about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:minLines="1"
+            android:maxLines="100"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/buttonSaveChanges"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:paddingStart="64dp"
+            android:paddingEnd="64dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/button_save_changes"
+            android:textAllCaps="false" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"
+            android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>

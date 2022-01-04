@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Controller.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Controller.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Context; 
+</span><span class="s0">import </span><span class="s1">android.preference.PreferenceManager; 
+</span><span class="s0">import </span><span class="s1">android.util.Log; 
+ 
+</span><span class="s0">import </span><span class="s1">com.google.gson.Gson; 
+</span><span class="s0">import </span><span class="s1">com.google.gson.GsonBuilder; 
+</span><span class="s0">import </span><span class="s1">com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory; 
+ 
+</span><span class="s0">import </span><span class="s1">java.io.IOException; 
+</span><span class="s0">import </span><span class="s1">java.io.Serializable; 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+</span><span class="s0">import </span><span class="s1">java.util.HashMap; 
+</span><span class="s0">import </span><span class="s1">java.util.HashSet; 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+</span><span class="s0">import </span><span class="s1">java.util.concurrent.TimeUnit; 
+</span><span class="s0">import </span><span class="s1">java.util.regex.Matcher; 
+</span><span class="s0">import </span><span class="s1">java.util.regex.Pattern; 
+ 
+</span><span class="s0">import </span><span class="s1">okhttp3.Cookie; 
+</span><span class="s0">import </span><span class="s1">okhttp3.CookieJar; 
+</span><span class="s0">import </span><span class="s1">okhttp3.HttpUrl; 
+</span><span class="s0">import </span><span class="s1">okhttp3.Interceptor; 
+</span><span class="s0">import </span><span class="s1">okhttp3.OkHttpClient; 
+</span><span class="s0">import </span><span class="s1">okhttp3.Request; 
+</span><span class="s0">import </span><span class="s1">okhttp3.Response; 
+</span><span class="s0">import </span><span class="s1">retrofit2.Retrofit; 
+</span><span class="s0">import </span><span class="s1">retrofit2.converter.gson.GsonConverterFactory; 
+</span><span class="s0">import </span><span class="s1">retrofit2.converter.scalars.ScalarsConverterFactory; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.any.DataStore; 
+ 
+</span><span class="s0">import static </span><span class="s1">ru.bstu.it41.service.any.UserRequest.URL_HOST; 
+</span><span class="s0">import static </span><span class="s1">ru.bstu.it41.service.any.UserRequest.URL_SCHEME; 
+ 
+</span><span class="s2">/** 
+ * Created by NorD on 16.11.2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">Controller </span><span class="s0">implements </span><span class="s1">Serializable{ 
+ 
+    </span><span class="s0">private static </span><span class="s1">OkHttpClient client = </span><span class="s0">null</span><span class="s1">; 
+ 
+    </span><span class="s2">//public static final String PREF_COOKIES = &quot;PREF_COOKIES&quot;;</span><span class="s1"> 
+ 
+    </span><span class="s0">public </span><span class="s1">Controller(</span><span class="s0">final </span><span class="s1">Context context){ 
+ 
+        </span><span class="s2">//PreferenceManager.getDefaultSharedPreferences(context).edit().remove(PREF_COOKIES).apply();</span><span class="s1"> 
+ 
+        </span><span class="s0">if</span><span class="s1">(client == </span><span class="s0">null</span><span class="s1">) { 
+            DataStore.clearPreferences(context); 
+            OkHttpClient.Builder builder = </span><span class="s0">new </span><span class="s1">OkHttpClient.Builder(); 
+            client = builder.followRedirects(</span><span class="s0">false</span><span class="s1">).cookieJar(</span><span class="s0">new </span><span class="s1">CookieJar() { 
+                </span><span class="s0">private final </span><span class="s1">HashMap&lt;String, List&lt;Cookie&gt;&gt; cookieStore = </span><span class="s0">new </span><span class="s1">HashMap&lt;&gt;(); 
+ 
+                @Override 
+                </span><span class="s0">public void </span><span class="s1">saveFromResponse(HttpUrl url, List&lt;Cookie&gt; cookies) { 
+                    </span><span class="s0">if </span><span class="s1">(cookieStore.get(url.host()) != </span><span class="s0">null</span><span class="s1">) { 
+                        List&lt;Cookie&gt; curCookies = cookieStore.get(url.host()); 
+                        List&lt;Cookie&gt; result = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Cookie&gt;(); 
+                        result.addAll(curCookies); 
+                        </span><span class="s0">int </span><span class="s1">cur_size = curCookies.size(); 
+                        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s3">0</span><span class="s1">; j &lt; cookies.size(); j++) { 
+                            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s1">; i &lt; cur_size; i++) { 
+                                </span><span class="s0">if </span><span class="s1">(result.get(i).name().equals(cookies.get(j).name())) { 
+                                    result.remove(i); 
+                                    cur_size -= </span><span class="s3">1</span><span class="s1">; 
+                                    i--; 
+                                } 
+                            } 
+                            result.add(cookies.get(j)); 
+                            </span><span class="s2">//curCookies.add(cookies.get(j));</span><span class="s1"> 
+                        } 
+                        cookieStore.put(url.host(), result); 
+                    } </span><span class="s0">else</span><span class="s1"> 
+                        cookieStore.put(url.host(), cookies); 
+ 
+ 
+                } 
+ 
+                @Override 
+                </span><span class="s0">public </span><span class="s1">List&lt;Cookie&gt; loadForRequest(HttpUrl url) { 
+                    List&lt;Cookie&gt; cookies = cookieStore.get(url.host()); 
+                    </span><span class="s0">return </span><span class="s1">cookies != </span><span class="s0">null </span><span class="s1">? cookies : </span><span class="s0">new </span><span class="s1">ArrayList&lt;Cookie&gt;(); 
+                } 
+            }).connectTimeout(</span><span class="s3">15</span><span class="s1">, TimeUnit.SECONDS).build(); 
+        } 
+    } 
+ 
+    </span><span class="s2">// static final String BASE_URL=&quot;192.168.88.253&quot;;</span><span class="s1"> 
+    </span><span class="s2">//62.76.93.40</span><span class="s1"> 
+            </span><span class="s2">//192.168.2.110</span><span class="s1"> 
+    </span><span class="s2">//192.168.43.245</span><span class="s1"> 
+    </span><span class="s0">static final </span><span class="s1">HttpUrl url = </span><span class="s0">new </span><span class="s1">HttpUrl.Builder().scheme(URL_SCHEME).host(URL_HOST).build(); 
+ 
+    </span><span class="s0">public static </span><span class="s1">serviceAPI getStaticAPI(){ 
+        </span><span class="s2">//if(api == null) {</span><span class="s1"> 
+            ScalarsConverterFactory factory = ScalarsConverterFactory.create(); 
+ 
+            Retrofit retrofit = </span><span class="s0">new </span><span class="s1">Retrofit.Builder() 
+                    .baseUrl(url) 
+                    .addConverterFactory(factory) 
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) 
+                    .client(client) 
+                    .build(); 
+        serviceAPI api = retrofit.create(serviceAPI.</span><span class="s0">class</span><span class="s1">); 
+       </span><span class="s2">// }</span><span class="s1"> 
+        </span><span class="s0">return </span><span class="s1">api; 
+    } 
+ 
+    </span><span class="s0">public static </span><span class="s1">serviceAPI getGsonAPI(){ 
+            Gson gson = </span><span class="s0">new </span><span class="s1">GsonBuilder() 
+                    .excludeFieldsWithoutExposeAnnotation() 
+                    .setLenient() 
+                    .create(); 
+ 
+            Retrofit retrofit = </span><span class="s0">new </span><span class="s1">Retrofit.Builder() 
+                    .baseUrl(url) 
+                    .addConverterFactory(GsonConverterFactory.create(gson)) 
+                    .client(client) 
+                    .build(); 
+        serviceAPI  api = retrofit.create(serviceAPI.</span><span class="s0">class</span><span class="s1">); 
+        </span><span class="s0">return </span><span class="s1">api; 
+    } 
+ 
+    </span><span class="s0">public static </span><span class="s1">serviceAPI getApi(){ 
+        Gson gson = </span><span class="s0">new </span><span class="s1">GsonBuilder() 
+                .setLenient() 
+                .create(); 
+ 
+        Retrofit retrofit = </span><span class="s0">new </span><span class="s1">Retrofit.Builder() 
+                .baseUrl(url) 
+                .addConverterFactory(GsonConverterFactory.create(gson)) 
+                .build(); 
+        serviceAPI itableApi=retrofit.create(serviceAPI.</span><span class="s0">class</span><span class="s1">); 
+        </span><span class="s0">return </span><span class="s1">itableApi; 
+    } 
+ 
+}</span></pre>
+</body>
+</html>

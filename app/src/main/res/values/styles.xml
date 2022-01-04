@@ -1,0 +1,94 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryColor</item>
+
+        <item name="cardViewStyle">@style/CardView</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="text_low_style" parent="@android:style/Widget.DeviceDefault.Light.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/Black</item>
+
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_list_style" parent="@style/text_low_style">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="text_list_title_style" parent="@style/text_low_style">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="text_high_style" parent="@android:style/Widget.DeviceDefault.Light.TextView">
+
+    </style>
+
+    <style name="button_style" parent="@style/Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingStart">64dp</item>
+        <item name="android:paddingEnd">64dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--<item name="android:textColor">@color/White</item>
+    <item name="android:background">@color/secondaryColor</item>-->
+
+    <style name="edit_style" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:background">@color/White</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="edit_list_style" parent="@style/edit_style">
+        <item name="android:textSize">20sp</item>
+
+    </style>
+
+    <style name="layout_list_style">
+
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="buttonDateStyle" parent="@android:style/Widget.DeviceDefault.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:background">@color/White</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
+    <!--<style name="text_view_style" parent="@android:style/Widget.Material.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/Black</item>
+
+        <item name="android:textSize">25sp</item>
+    </style>-->
+
+</resources>

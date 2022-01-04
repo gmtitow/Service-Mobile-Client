@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>MainActivityState.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivityState.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+ 
+</span><span class="s0">import </span><span class="s1">etr.android.reamp.mvp.SerializableStateModel; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.AllForUser; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.Category; 
+ 
+</span><span class="s2">/** 
+ * Created by Герман on 11.11.2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivityState </span><span class="s0">extends </span><span class="s1">SerializableStateModel { 
+    </span><span class="s0">private </span><span class="s1">Boolean authorized = </span><span class="s0">false</span><span class="s1">; 
+    </span><span class="s0">private boolean </span><span class="s1">first = </span><span class="s0">true</span><span class="s1">; 
+    </span><span class="s0">public </span><span class="s1">String message; 
+ 
+    </span><span class="s0">public </span><span class="s1">Boolean getAuthorized() { 
+        </span><span class="s0">return </span><span class="s1">authorized; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setAuthorized(Boolean authorized) { 
+        </span><span class="s0">this</span><span class="s1">.authorized = authorized; 
+    } 
+ 
+    </span><span class="s2">//Категории</span><span class="s1"> 
+    </span><span class="s0">private boolean </span><span class="s1">mCategoryDownloaded; 
+    </span><span class="s0">private boolean </span><span class="s1">mCategoryDownloadInProgress; 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isCategoryDownloadInProgress() { 
+        </span><span class="s0">return </span><span class="s1">mCategoryDownloadInProgress; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setCategoryDownloadInProgress(</span><span class="s0">boolean </span><span class="s1">categoryDownloadInProgress) { 
+        mCategoryDownloadInProgress = categoryDownloadInProgress; 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isCategoryDownloaded() { 
+        </span><span class="s0">return </span><span class="s1">mCategoryDownloaded; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setCategoryDownloaded(</span><span class="s0">boolean </span><span class="s1">categoryDownloaded) { 
+        mCategoryDownloaded = categoryDownloaded; 
+    } 
+ 
+    </span><span class="s0">private </span><span class="s1">Controller mController; 
+ 
+    </span><span class="s0">public </span><span class="s1">Controller getController() { 
+        </span><span class="s0">return </span><span class="s1">mController; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setController(Controller controller) { 
+        mController = controller; 
+    } 
+ 
+    </span><span class="s0">private </span><span class="s1">AllForUser mUserinfo; 
+ 
+    </span><span class="s0">public </span><span class="s1">AllForUser getUserinfo() { 
+        </span><span class="s0">return </span><span class="s1">mUserinfo; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setUserinfo(AllForUser userinfo) { 
+        mUserinfo = userinfo; 
+    } 
+ 
+    </span><span class="s0">public boolean </span><span class="s1">isFirst() { 
+        </span><span class="s0">return </span><span class="s1">first; 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">setFirst(</span><span class="s0">boolean </span><span class="s1">first) { 
+        </span><span class="s0">this</span><span class="s1">.first = first; 
+    } 
+} 
+</span></pre>
+</body>
+</html>

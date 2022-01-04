@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.bstu.it41.service">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <application
+        android:name="com.activeandroid.app.Application"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:minSdkVersion="8"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="service_services.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="ru.bstu.it41.service.models.Tasks, ru.bstu.it41.service.models.Tender,ru.bstu.it41.service.models.Category,             ru.bstu.it41.service.models.Tender,ru.bstu.it41.service.models.User, ru.bstu.it41.service.models.Tender,ru.bstu.it41.service.models.Userinfo,             ru.bstu.it41.service.models.Tender,ru.bstu.it41.service.models.Settings,ru.bstu.it41.service.models.Tender,ru.bstu.it41.service.models.Offer, ru.bstu.it41.service.models.Reviews, ru.bstu.it41.service.models.Message" />
+
+        <!-- Тут будут сервисы -->
+        <service android:name=".MessageService" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="ru.bstu.it41.service.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files" />
+        </provider>
+
+        <activity android:name=".tasks.map.ChooseLocationActivity" />
+        <activity
+            android:name=".tasks.view.TaskViewActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".tasks.addTask.TaskAddActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".tasks.addTender.TaskAddTenderActivity" />
+        <activity android:name=".tasks.change.TaskChangeActivity" />
+        <activity
+            android:name=".offers.forTask.OffersForTaskActivity"
+            android:parentActivityName=".tasks.view.TaskViewActivity" />
+        <activity
+            android:name=".offers.forTask.view.OfferForTaskViewActivity"
+            android:parentActivityName=".offers.forTask.OffersForTaskActivity" />
+        <activity android:name=".profile.other_profile.OtherProfileActivity" />
+        <activity android:name=".profile.review.ReviewsActivity" />
+        <activity
+            android:name=".tenders.tenderView.TenderViewActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".offers.add.OfferAddActivity" />
+        <activity
+            android:name=".offers.view.OfferViewActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".profile.change.ProfileChangeActivity" />
+        <activity android:name=".profile.settings.SettingsActivity" />
+        <activity android:name=".profile.about.ProfileAboutActivity" />
+
+        <service android:name=".MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_textsms_white" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/secondaryColor" />
+
+        <activity
+            android:name=".profile.review.add.ReviewAddActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".profile.review.view.ReviewViewActivity"></activity>
+    </application>
+
+</manifest>

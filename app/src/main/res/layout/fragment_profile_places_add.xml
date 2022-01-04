@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ru.bstu.it41.service.profile.place.ProfilePlacesFragment">
+
+    <EditText
+        android:id="@+id/edit_description"
+        style="@style/edit_list_style"
+        android:layout_width="match_parent"
+        android:hint="@string/edit_place_decription"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:inputType="textMultiLine"
+        android:minLines="3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_place_add"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="@string/button_place_add" />
+
+        <Button
+            android:id="@+id/button_place_cancel"
+            style="@style/button_style"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:text="@string/button_place_cancel" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:layout_margin="8dp">
+
+    <TextView
+        style="@style/text_list_title_style"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="8dp"
+        android:text="@string/offer_base_conditions"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/text_task_description"
+        style="@style/text_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text = "Короче, ничего не боясь, подойти и ухайдохать по самое нехочу."
+        android:gravity="start"
+        android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                style="@style/text_list_style"
+                android:layout_height="wrap_content"
+                android:text="@string/tender_task_deadline_title"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_list_style"
+                android:id="@+id/text_task_deadline"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                style="@style/text_list_style"
+                android:layout_height="wrap_content"
+                android:text="@string/task_price_title"/>
+            <TextView
+                android:layout_width="wrap_content"
+                style="@style/text_list_style"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_task_price"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_list_title_style"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="8dp"
+            android:labelFor="@id/edit_offer_description"
+            android:text="@string/offer_description_title" />
+
+        <EditText
+            android:id="@+id/edit_offer_description"
+            style="@style/text_list_style"
+            android:maxLines="100"
+            android:minLines="1"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            tools:text = "Описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание"
+            android:layout_marginEnd="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_list_title_style"
+            android:layout_width="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:text="@string/task_deadline_title" />
+
+        <Button
+            style="@android:style/Widget.EditText"
+            android:id="@+id/button_offer_deadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cursorVisible="false"
+            android:inputType="none" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_list_title_style"
+        android:layout_width="match_parent"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:text="@string/task_price_title" />
+
+    <EditText
+        android:id="@+id/edit_offer_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/button_add_offer"
+        style="@style/button_style"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text = "@string/offer_button_add"/>
+
+</LinearLayout>
+</ScrollView>

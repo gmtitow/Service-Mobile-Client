@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>CustomTypefaceSpan.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+CustomTypefaceSpan.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">android.graphics.Paint; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Typeface; 
+</span><span class="s0">import </span><span class="s1">android.text.TextPaint; 
+</span><span class="s0">import </span><span class="s1">android.text.style.TypefaceSpan; 
+ 
+</span><span class="s2">/** 
+ * Created by Герман on 13.11.2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">CustomTypefaceSpan </span><span class="s0">extends </span><span class="s1">TypefaceSpan { 
+    </span><span class="s0">private final </span><span class="s1">Typeface newType; 
+    </span><span class="s0">private int </span><span class="s1">textSize = </span><span class="s3">0</span><span class="s1">; 
+ 
+    </span><span class="s0">public </span><span class="s1">CustomTypefaceSpan(String family, Typeface type) { 
+        </span><span class="s0">super</span><span class="s1">(family); 
+        newType = type; 
+    } 
+    </span><span class="s0">public </span><span class="s1">CustomTypefaceSpan(String family, Typeface type, </span><span class="s0">int </span><span class="s1">textSize) { 
+        </span><span class="s0">super</span><span class="s1">(family); 
+        newType = type; 
+        </span><span class="s0">this</span><span class="s1">.textSize = textSize; 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">updateDrawState(TextPaint ds) { 
+        applyCustomTypeFace(ds, newType,textSize); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">updateMeasureState(TextPaint paint) { 
+        applyCustomTypeFace(paint, newType,textSize); 
+    } 
+ 
+    </span><span class="s0">private static void </span><span class="s1">applyCustomTypeFace(Paint paint, Typeface tf, </span><span class="s0">int </span><span class="s1">textSize) { 
+        </span><span class="s0">int </span><span class="s1">oldStyle; 
+        Typeface old = paint.getTypeface(); 
+        </span><span class="s0">if </span><span class="s1">(old == </span><span class="s0">null</span><span class="s1">) { 
+            oldStyle = </span><span class="s3">0</span><span class="s1">; 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            oldStyle = old.getStyle(); 
+        } 
+        </span><span class="s0">int </span><span class="s1">fake = oldStyle &amp; ~tf.getStyle(); 
+        </span><span class="s0">if </span><span class="s1">((fake &amp; Typeface.BOLD) != </span><span class="s3">0</span><span class="s1">) { 
+            paint.setFakeBoldText(</span><span class="s0">true</span><span class="s1">); 
+        } 
+        </span><span class="s0">if </span><span class="s1">((fake &amp; Typeface.ITALIC) != </span><span class="s3">0</span><span class="s1">) { 
+            paint.setTextSkewX(-</span><span class="s3">0.25f</span><span class="s1">); 
+        } 
+        </span><span class="s0">if</span><span class="s1">(textSize != </span><span class="s3">0</span><span class="s1">) 
+            paint.setTextSize(textSize); 
+        paint.setFakeBoldText(</span><span class="s0">true</span><span class="s1">); 
+        paint.setTypeface(tf); 
+    } 
+} 
+</span></pre>
+</body>
+</html>

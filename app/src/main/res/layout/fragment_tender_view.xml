@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_user">
+
+        <ImageView
+            android:id="@+id/image_photo"
+            android:layout_width="114dp"
+            android:layout_height="109dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/text_fio"
+            style="@style/text_low_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="3"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/image_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Коробов Крутомир Васильевич" />
+
+        <TextView
+            android:id="@+id/text_count_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            tools:text="16 лет"
+            app:layout_constraintStart_toEndOf="@+id/image_photo"
+            app:layout_constraintTop_toBottomOf="@+id/text_fio" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_task_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text = "Подойти и ухайдохать"
+        style="@style/text_list_style"
+        android:gravity="start"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/text_task_description"
+        style="@style/text_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text = "Короче, ничего не боясь, подойти и ухайдохать по самое нехочу."
+        android:gravity="start"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:text="@string/task_category_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_category"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:text="@string/tender_task_deadline_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_deadline"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:text="@string/task_price_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_list_style"
+            android:id="@+id/text_tender_price"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:text="@string/task_address_title"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_list_style"
+            android:id="@+id/text_tender_address"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tender_go_to_map"
+        style="@style/button_style"
+        android:id="@+id/button_to_map"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_list_style"
+            android:text="@string/tender_date_start"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_list_style"
+            android:id="@+id/text_tenderStart"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:text="@string/tender_date_end"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/text_list_style"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_tenderEnd"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/button_style"
+        android:text="@string/text_tender_participation"
+        android:id="@+id/button_add_offer"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>
+</ScrollView>

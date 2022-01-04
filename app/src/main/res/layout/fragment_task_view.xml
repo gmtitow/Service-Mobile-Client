@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/task_task_layout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:text="@string/task_name_title" />
+
+                <TextView
+                    android:id="@+id/text_name"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:text="@string/task_category_title" />
+
+                <TextView
+                    android:id="@+id/text_category"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:text="@string/task_deadline_title" />
+
+                <TextView
+                    android:id="@+id/text_deadline"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:text="@string/task_price_title" />
+
+                <TextView
+                    android:id="@+id/text_price"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="46dp"
+                    android:text="@string/task_description_title" />
+
+                <TextView
+                    android:id="@+id/text_description"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:maxLines="100" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:text="@string/task_status_title" />
+
+                <TextView
+                    android:id="@+id/text_status"
+                    style="@style/text_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    style="@style/text_list_style"
+                    android:layout_marginStart="66dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/task_address_title"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_list_style"
+                    android:id="@+id/text_tender_address"/>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tender_go_to_map"
+                style="@style/button_style"
+                android:id="@+id/button_to_map"/>
+
+            <Button
+                android:id="@+id/button_change_task"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:text="@string/task_change" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_go_to_chat"
+            style="@style/button_style"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offer_go_to_dialog" />
+
+        <TextView
+            style="@style/text_list_style"
+            android:id="@+id/text_tender"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Тендер" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout_tender_created">
+
+                <LinearLayout
+                    style="@style/layout_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_list_title_style"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/tender_duration_title" />
+
+                    <TextView
+                        android:id="@+id/text_tender_duration"
+                        style="@style/text_list_style"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="6dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_offers"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/task_offers"
+                    tools:text="Предложения (0)" />
+
+                <Button
+                    android:id="@+id/button_delete_tender"
+                    style="@style/button_style"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tender_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_tender_isnt_created"
+                style="@style/layout_list_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_list_title_style"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:text="@string/task_tender_isnt_created" />
+
+                <Button
+                    android:id="@+id/button_add_tender"
+                    style="@style/button_style"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/tender_add" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

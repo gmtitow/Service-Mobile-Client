@@ -1,0 +1,475 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Typeface; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.app.Fragment; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.app.FragmentManager; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.ActionMenuView; 
+</span><span class="s0">import </span><span class="s1">android.text.Editable; 
+</span><span class="s0">import </span><span class="s1">android.text.Spannable; 
+</span><span class="s0">import </span><span class="s1">android.text.SpannableString; 
+</span><span class="s0">import </span><span class="s1">android.text.SpannableStringBuilder; 
+</span><span class="s0">import </span><span class="s1">android.text.TextWatcher; 
+</span><span class="s0">import </span><span class="s1">android.util.Log; 
+</span><span class="s0">import </span><span class="s1">android.view.SubMenu; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.support.design.widget.NavigationView; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.view.GravityCompat; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.widget.DrawerLayout; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.ActionBarDrawerToggle; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.Toolbar; 
+</span><span class="s0">import </span><span class="s1">android.view.Menu; 
+</span><span class="s0">import </span><span class="s1">android.view.MenuItem; 
+ 
+</span><span class="s0">import </span><span class="s1">java.io.Serializable; 
+ 
+</span><span class="s0">import </span><span class="s1">etr.android.reamp.mvp.ReampAppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">etr.android.reamp.mvp.ReampPresenter; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.any.DataStore; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.any.FragmentRetainer; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.profile.ProfileFragment; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.tasks.TaskFragment; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.login.LoginFragment; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.register.RegisterFragment; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.tenders.TenderFragment; 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">ReampAppCompatActivity&lt;MainActivityPresenter, MainActivityState&gt; 
+        </span><span class="s0">implements </span><span class="s1">NavigationView.OnNavigationItemSelectedListener, Serializable { 
+    </span><span class="s2">//Переменные, которые можно в State перевести</span><span class="s1"> 
+    </span><span class="s2">//ViewGroup container;</span><span class="s1"> 
+    </span><span class="s0">private final </span><span class="s1">String TAG = </span><span class="s3">&quot;mainTag&quot;</span><span class="s1">; 
+ 
+    </span><span class="s0">public final </span><span class="s1">String STACK_MAIN = </span><span class="s3">&quot;myStack&quot;</span><span class="s1">; 
+    </span><span class="s0">public final </span><span class="s1">String STACK_LOCAL = </span><span class="s3">&quot;localStack&quot;</span><span class="s1">; 
+    MenuItem mPreviousItem; 
+ 
+ 
+    MenuItem item_exit; 
+    MenuItem item_enter; 
+    MenuItem item_register; 
+ 
+    MenuItem mItemTasks; 
+    MenuItem mItemProfile; 
+ 
+    </span><span class="s0">private </span><span class="s1">ActionMenuView amvMenu; 
+ 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onStart() { 
+        </span><span class="s0">super</span><span class="s1">.onStart(); 
+        </span><span class="s2">//SugarContext.init(this);</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onDestroy() { 
+        </span><span class="s0">super</span><span class="s1">.onDestroy(); 
+        </span><span class="s2">//SugarContext.terminate();</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onStateChanged(MainActivityState stateModel) { 
+        </span><span class="s0">if </span><span class="s1">(!stateModel.isCategoryDownloaded() &amp;&amp; !stateModel.isCategoryDownloadInProgress()) 
+            getPresenter().downloadCategories(); 
+ 
+        item_enter.setVisible(!stateModel.getAuthorized()); 
+        item_register.setVisible(!stateModel.getAuthorized()); 
+ 
+        item_exit.setVisible(stateModel.getAuthorized()); 
+        mItemProfile.setVisible(stateModel.getAuthorized()); 
+        mItemTasks.setVisible(stateModel.getAuthorized()); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public </span><span class="s1">ReampPresenter&lt;MainActivityState&gt; onCreatePresenter() { 
+        </span><span class="s0">return new </span><span class="s1">MainActivityPresenter(); 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public </span><span class="s1">MainActivityState onCreateStateModel() { 
+ 
+        MainActivityState state = </span><span class="s0">new </span><span class="s1">MainActivityState(); 
+        </span><span class="s2">//еще один костыль на моей совести. Впрочем, переживу.</span><span class="s1"> 
+        state.setController(</span><span class="s0">new </span><span class="s1">Controller(</span><span class="s0">this</span><span class="s1">)); 
+        </span><span class="s0">if </span><span class="s1">(DataStore.getUserId(</span><span class="s0">this</span><span class="s1">.getApplicationContext()) != -</span><span class="s4">1</span><span class="s1">) { 
+            state.setAuthorized(</span><span class="s0">true</span><span class="s1">); 
+            state.setCategoryDownloaded(</span><span class="s0">true</span><span class="s1">); 
+        } 
+ 
+        </span><span class="s0">return </span><span class="s1">state; 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+ 
+        Toolbar toolbar = findViewById(R.id.toolbar); 
+        setSupportActionBar(toolbar); 
+ 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout); 
+ 
+        ActionBarDrawerToggle toggle = </span><span class="s0">new </span><span class="s1">ActionBarDrawerToggle( 
+                </span><span class="s0">this</span><span class="s1">, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close); 
+        drawer.setDrawerListener(toggle); 
+        toggle.syncState(); 
+ 
+ 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); 
+ 
+        View navHeaderMain = navigationView.inflateHeaderView(R.layout.nav_header_main); 
+        </span><span class="s2">//Применение шрифтов к header-у менюшки</span><span class="s1"> 
+        </span><span class="s2">//Typeface font = Typeface.create(&quot;Poiret One&quot;, Typeface.NORMAL);</span><span class="s1"> 
+ 
+        navigationView.setNavigationItemSelectedListener(</span><span class="s0">this</span><span class="s1">); 
+ 
+        navigationView.setNavigationItemSelectedListener(</span><span class="s0">this</span><span class="s1">); 
+        Menu mMenu = navigationView.getMenu(); 
+ 
+        </span><span class="s2">//И инициализация этих переменных</span><span class="s1"> 
+        </span><span class="s2">//container = (ViewGroup) findViewById(R.id.container);</span><span class="s1"> 
+ 
+        item_exit = mMenu.findItem(R.id.nav_exit); 
+ 
+        </span><span class="s2">//item_exit.setTitle(wrapInSpan(&quot;Выйти&quot;));</span><span class="s1"> 
+        item_enter = mMenu.findItem(R.id.nav_enter); 
+        item_register = mMenu.findItem(R.id.nav_register); 
+        mItemProfile = mMenu.findItem(R.id.submenu_cabinet); 
+        mItemTasks = mMenu.findItem(R.id.nav_tasks); 
+        mPreviousItem = item_exit; 
+ 
+        </span><span class="s2">//Изменение шрифта у пунктов меню</span><span class="s1"> 
+        Menu m = navigationView.getMenu(); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; m.size(); i++) { 
+            MenuItem mi = m.getItem(i); </span><span class="s2">//for aapplying a font to subMenu ...</span><span class="s1"> 
+            applyFontToMenuItem(mi, </span><span class="s4">30</span><span class="s1">); 
+            SubMenu subMenu = mi.getSubMenu(); 
+            </span><span class="s0">if </span><span class="s1">(subMenu != </span><span class="s0">null </span><span class="s1">&amp;&amp; subMenu.size() &gt; </span><span class="s4">0</span><span class="s1">) { 
+                </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s4">0</span><span class="s1">; j &lt; subMenu.size(); j++) { 
+                    MenuItem subMenuItem = subMenu.getItem(j); 
+                    applyFontToMenuItem(subMenuItem, </span><span class="s4">35</span><span class="s1">); 
+                } 
+            } </span><span class="s2">//the method we have create in activity applyFontToMenuItem(mi); }</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">if </span><span class="s1">(getPresenter().getStateModel().isFirst()) { 
+            getPresenter().getStateModel().setFirst(</span><span class="s0">false</span><span class="s1">); 
+            Bundle extras = getIntent().getExtras(); 
+            </span><span class="s0">if </span><span class="s1">(extras != </span><span class="s0">null</span><span class="s1">) { 
+                Fragment fragm = FragmentRetainer.getFragment(getIntent().getIntExtra(FragmentRetainer.EXTRA_FRAGMENT, </span><span class="s4">0</span><span class="s1">)); 
+                replaceFragment(fragm, 
+                        </span><span class="s0">null</span><span class="s1">, STACK_MAIN, R.id.container, </span><span class="s0">true</span><span class="s1">); 
+ 
+            } 
+        } 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onBackPressed() { 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout); 
+        FragmentManager fragmentManager = getSupportFragmentManager(); 
+        String str = </span><span class="s3">&quot;&quot;</span><span class="s1">; 
+        </span><span class="s0">int </span><span class="s1">i; 
+        </span><span class="s0">boolean </span><span class="s1">b; 
+        </span><span class="s0">if </span><span class="s1">(drawer.isDrawerOpen(GravityCompat.START)) { 
+            drawer.closeDrawer(GravityCompat.START); 
+        } </span><span class="s0">else if </span><span class="s1">(fragmentManager.getBackStackEntryCount() &gt; </span><span class="s4">0</span><span class="s1">) { 
+            fragmentManager.popBackStack(); 
+            </span><span class="s2">//Log.d(TAG, &quot;onBackPressed: b = &quot; + b);</span><span class="s1"> 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            </span><span class="s0">super</span><span class="s1">.onBackPressed(); 
+        } 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onCreateOptionsMenu(Menu menu) { 
+        </span><span class="s2">// Inflate the menu; this adds items to the action bar if it is present.</span><span class="s1"> 
+        getMenuInflater().inflate(R.menu.main, menu); 
+        </span><span class="s2">//item_exit= menu.add(0, 1, 0,&quot;Logout&quot;);</span><span class="s1"> 
+ 
+        </span><span class="s0">return true</span><span class="s1">; 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item) { 
+        </span><span class="s2">// Handle action bar item clicks here. The action bar will</span><span class="s1"> 
+        </span><span class="s2">// automatically handle clicks on the Home/Up button, so long</span><span class="s1"> 
+        </span><span class="s2">// as you specify a parent activity in AndroidManifest.xml.</span><span class="s1"> 
+        </span><span class="s0">int </span><span class="s1">id = item.getItemId(); 
+ 
+        </span><span class="s2">//noinspection SimplifiableIfStatement</span><span class="s1"> 
+        </span><span class="s0">if </span><span class="s1">(id == R.id.action_settings) { 
+            </span><span class="s0">return true</span><span class="s1">; 
+        } 
+ 
+        </span><span class="s0">return super</span><span class="s1">.onOptionsItemSelected(item); 
+    } 
+ 
+ 
+    @SuppressWarnings(</span><span class="s3">&quot;StatementWithEmptyBody&quot;</span><span class="s1">) 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onNavigationItemSelected(MenuItem item) { 
+        </span><span class="s2">// Handle navigation view item clicks here.</span><span class="s1"> 
+        </span><span class="s0">int </span><span class="s1">id = item.getItemId(); 
+        Fragment fragment = </span><span class="s0">null</span><span class="s1">; 
+        Class fragmentClass = </span><span class="s0">null</span><span class="s1">; 
+        </span><span class="s0">int </span><span class="s1">titleId = </span><span class="s4">0</span><span class="s1">; 
+ 
+        </span><span class="s0">switch </span><span class="s1">(id) { 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_register: { 
+                </span><span class="s2">//container = (LinearLayout) findViewById(R.id.container_register);</span><span class="s1"> 
+                </span><span class="s2">//fragmentClass = RegisterFragment.class;</span><span class="s1"> 
+                fragment = </span><span class="s0">new </span><span class="s1">RegisterFragment(); 
+                titleId = R.string.title_register; 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+ 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_enter: { 
+                </span><span class="s2">//container = findViewById(R.id.container_login);</span><span class="s1"> 
+                </span><span class="s2">//fragmentClass = LoginTestFragment.class;</span><span class="s1"> 
+                titleId = R.string.title_authorization; 
+                fragment = </span><span class="s0">new </span><span class="s1">LoginFragment(); 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+ 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_view: { 
+ 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_exit: { 
+                </span><span class="s2">//container = (ConstraintLayout) findViewById(R.id.container_empty);</span><span class="s1"> 
+                getPresenter().exit(); 
+                getPresenter().getStateModel().setAuthorized(</span><span class="s0">false</span><span class="s1">); 
+                DataStore.clearAll(</span><span class="s0">this</span><span class="s1">.getApplicationContext()); 
+                getPresenter().sendStateModel(); 
+                fragment = </span><span class="s0">new </span><span class="s1">LoginFragment(); 
+                titleId = R.string.title_authorization; 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_profile: { 
+                </span><span class="s2">//fragmentClass = ProfileFragment.class;</span><span class="s1"> 
+                fragment = </span><span class="s0">new </span><span class="s1">ProfileFragment(); 
+                titleId = R.string.title_profile; 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_tasks: { 
+                </span><span class="s2">//fragmentClass = TaskFragment.class;</span><span class="s1"> 
+                fragment = </span><span class="s0">new </span><span class="s1">TaskFragment(); 
+                titleId = R.string.title_tasks; 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+ 
+            </span><span class="s0">case </span><span class="s1">R.id.nav_tenders: { 
+                </span><span class="s2">//fragmentClass = TenderFragment.class;</span><span class="s1"> 
+                fragment = </span><span class="s0">new </span><span class="s1">TenderFragment(); 
+                titleId = R.string.title_tenders; 
+                </span><span class="s0">break</span><span class="s1">; 
+            } 
+        } 
+        </span><span class="s0">try </span><span class="s1">{ 
+            replaceFragment(fragment, </span><span class="s0">null</span><span class="s1">, STACK_MAIN, R.id.container, </span><span class="s0">false</span><span class="s1">, titleId); 
+            </span><span class="s2">// Выделяем выбранный пункт меню в шторке</span><span class="s1"> 
+            item.setChecked(</span><span class="s0">true</span><span class="s1">); 
+            mPreviousItem.setChecked(</span><span class="s0">false</span><span class="s1">); 
+            mPreviousItem = item; 
+            </span><span class="s2">// Выводим выбранный пункт в заголовке</span><span class="s1"> 
+            </span><span class="s2">//setTitle(item.getTitle());</span><span class="s1"> 
+        } </span><span class="s0">catch </span><span class="s1">(Exception e) { 
+            Log.e(</span><span class="s3">&quot;act_main&quot;</span><span class="s1">, </span><span class="s3">&quot;ошибка при выборе фрагмента:&quot;</span><span class="s1">); 
+            e.printStackTrace(); 
+        } 
+ 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout); 
+        drawer.closeDrawer(GravityCompat.START); 
+        </span><span class="s0">return true</span><span class="s1">; 
+    } 
+ 
+    </span><span class="s0">public static class </span><span class="s1">SimpleTextWatcher </span><span class="s0">implements </span><span class="s1">TextWatcher { 
+ 
+        @Override 
+        </span><span class="s0">public void </span><span class="s1">beforeTextChanged(CharSequence s, </span><span class="s0">int </span><span class="s1">start, </span><span class="s0">int </span><span class="s1">count, </span><span class="s0">int </span><span class="s1">after) { 
+ 
+        } 
+ 
+        @Override 
+        </span><span class="s0">public void </span><span class="s1">onTextChanged(CharSequence s, </span><span class="s0">int </span><span class="s1">start, </span><span class="s0">int </span><span class="s1">before, </span><span class="s0">int </span><span class="s1">count) { 
+ 
+        } 
+ 
+        @Override 
+        </span><span class="s0">public void </span><span class="s1">afterTextChanged(Editable s) { 
+ 
+        } 
+    } 
+ 
+    </span><span class="s0">private </span><span class="s1">CharSequence wrapInSpan(CharSequence value) { 
+        SpannableStringBuilder sb = </span><span class="s0">new </span><span class="s1">SpannableStringBuilder(value); 
+        sb.setSpan(Typeface.create(</span><span class="s3">&quot;Times New Romans&quot;</span><span class="s1">, Typeface.BOLD), </span><span class="s4">0</span><span class="s1">, value.length(), </span><span class="s4">0</span><span class="s1">); 
+        </span><span class="s0">return </span><span class="s1">sb; 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToMenuItem(MenuItem mi) { 
+        Typeface font = Typeface.create(</span><span class="s3">&quot;Times New Romans&quot;</span><span class="s1">, Typeface.BOLD); 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(mi.getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        mi.setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToMenuItem(MenuItem mi, </span><span class="s0">int </span><span class="s1">textSize) { 
+        Typeface font = Typeface.create(</span><span class="s3">&quot;Times New Romans&quot;</span><span class="s1">, Typeface.NORMAL); 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(mi.getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font, textSize), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        mi.setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToMenuItem(MenuItem mi, Typeface font) { 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(mi.getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        mi.setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToMenuItem(MenuItem mi, Typeface font, </span><span class="s0">int </span><span class="s1">textSize) { 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(mi.getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font, textSize), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        mi.setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToTitle(Typeface font) { 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">private void </span><span class="s1">applyFontToTitle(Typeface font, </span><span class="s0">int </span><span class="s1">textSize) { 
+        SpannableString mNewTitle = </span><span class="s0">new </span><span class="s1">SpannableString(getTitle()); 
+        mNewTitle.setSpan(</span><span class="s0">new </span><span class="s1">CustomTypefaceSpan(</span><span class="s3">&quot;&quot;</span><span class="s1">, font, textSize), </span><span class="s4">0</span><span class="s1">, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); 
+        setTitle(mNewTitle); 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">replaceFragment(Class fragmentClass, Bundle bundle, String stackName, </span><span class="s0">int </span><span class="s1">container) { 
+        </span><span class="s0">try </span><span class="s1">{ 
+            android.support.v4.app.Fragment fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance(); 
+            </span><span class="s0">if </span><span class="s1">(bundle != </span><span class="s0">null</span><span class="s1">) 
+                fragment.setArguments(bundle); 
+            </span><span class="s2">// Вставляем фрагмент, заменяя текущий фрагмент</span><span class="s1"> 
+            FragmentManager fragmentManager = getSupportFragmentManager(); 
+            </span><span class="s2">//Fragment fragment_2 = fragmentManager.findFragmentById(R.id.container);</span><span class="s1"> 
+            </span><span class="s0">if </span><span class="s1">(stackName != </span><span class="s0">null</span><span class="s1">) { 
+                fragmentManager.beginTransaction().replace(container, fragment).addToBackStack(</span><span class="s3">&quot;myStack&quot;</span><span class="s1">).commit(); 
+            } </span><span class="s0">else</span><span class="s1"> 
+                fragmentManager.beginTransaction().replace(container, fragment).commit(); 
+ 
+        } </span><span class="s0">catch </span><span class="s1">(Exception e) { 
+            Log.e(</span><span class="s3">&quot;act_main&quot;</span><span class="s1">, </span><span class="s3">&quot;ошибка при выборе фрагмента в профиле:&quot;</span><span class="s1">); 
+            e.printStackTrace(); 
+        } 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">replaceFragment(Class fragmentClass, Bundle bundle, String stackName, </span><span class="s0">int </span><span class="s1">container, </span><span class="s0">boolean </span><span class="s1">popFromBackStack) { 
+        </span><span class="s0">try </span><span class="s1">{ 
+            android.support.v4.app.Fragment fragment = (android.support.v4.app.Fragment) fragmentClass.newInstance(); 
+            </span><span class="s0">if </span><span class="s1">(bundle != </span><span class="s0">null</span><span class="s1">) 
+                fragment.setArguments(bundle); 
+ 
+            </span><span class="s2">// Вставляем фрагмент, заменяя текущий фрагмент</span><span class="s1"> 
+            FragmentManager fragmentManager = getSupportFragmentManager(); 
+ 
+            </span><span class="s0">if </span><span class="s1">(popFromBackStack) 
+                fragmentManager.popBackStack(); 
+            </span><span class="s2">//Fragment fragment_2 = fragmentManager.findFragmentById(R.id.container);</span><span class="s1"> 
+            </span><span class="s0">if </span><span class="s1">(stackName != </span><span class="s0">null</span><span class="s1">) { 
+                fragmentManager.beginTransaction().replace(container, fragment).addToBackStack(</span><span class="s3">&quot;myStack&quot;</span><span class="s1">).commit(); 
+            } </span><span class="s0">else</span><span class="s1"> 
+                fragmentManager.beginTransaction().replace(container, fragment).commit(); 
+ 
+        } </span><span class="s0">catch </span><span class="s1">(Exception e) { 
+            Log.e(</span><span class="s3">&quot;act_main&quot;</span><span class="s1">, </span><span class="s3">&quot;ошибка при выборе фрагмента в профиле:&quot;</span><span class="s1">); 
+            e.printStackTrace(); 
+        } 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">replaceFragment(Fragment fragment, Bundle bundle, String stackName, </span><span class="s0">int </span><span class="s1">container, </span><span class="s0">boolean </span><span class="s1">popFromBackStack) { 
+        </span><span class="s0">try </span><span class="s1">{ 
+            </span><span class="s0">if </span><span class="s1">(bundle != </span><span class="s0">null</span><span class="s1">) { 
+                </span><span class="s2">//fragment.setArguments(bundle);</span><span class="s1"> 
+                Bundle existsBundle = fragment.getArguments(); 
+                existsBundle.putAll(bundle); 
+                fragment.setArguments(existsBundle); 
+            } 
+ 
+            </span><span class="s2">// Вставляем фрагмент, заменяя текущий фрагмент</span><span class="s1"> 
+            FragmentManager fragmentManager = getSupportFragmentManager(); 
+ 
+            </span><span class="s0">if </span><span class="s1">(popFromBackStack) 
+                fragmentManager.popBackStack(); 
+            </span><span class="s2">//Fragment fragment_2 = fragmentManager.findFragmentById(R.id.container);</span><span class="s1"> 
+            </span><span class="s0">if </span><span class="s1">(stackName != </span><span class="s0">null</span><span class="s1">) { 
+                fragmentManager.beginTransaction().replace(container, fragment).addToBackStack(</span><span class="s3">&quot;myStack&quot;</span><span class="s1">).commit(); 
+            } </span><span class="s0">else</span><span class="s1"> 
+                fragmentManager.beginTransaction().replace(container, fragment).commit(); 
+ 
+        } </span><span class="s0">catch </span><span class="s1">(Exception e) { 
+            Log.e(</span><span class="s3">&quot;act_main&quot;</span><span class="s1">, </span><span class="s3">&quot;ошибка при выборе фрагмента в профиле:&quot;</span><span class="s1">); 
+            e.printStackTrace(); 
+        } 
+ 
+    } 
+ 
+    </span><span class="s0">public void </span><span class="s1">replaceFragment(Fragment fragment, Bundle bundle, String stackName, </span><span class="s0">int </span><span class="s1">container, </span><span class="s0">boolean </span><span class="s1">popFromBackStack, 
+                                </span><span class="s0">int </span><span class="s1">titleId) { 
+        </span><span class="s0">try </span><span class="s1">{ 
+            </span><span class="s0">if </span><span class="s1">(bundle != </span><span class="s0">null</span><span class="s1">) { 
+                </span><span class="s2">//fragment.setArguments(bundle);</span><span class="s1"> 
+                Bundle existsBundle = fragment.getArguments(); 
+                existsBundle.putAll(bundle); 
+                fragment.setArguments(existsBundle); 
+            } 
+ 
+            </span><span class="s0">if </span><span class="s1">(titleId == </span><span class="s4">0</span><span class="s1">) 
+                setTitle(R.string.app_name); 
+            </span><span class="s0">else</span><span class="s1"> 
+                setTitle(titleId); 
+ 
+            </span><span class="s2">// Вставляем фрагмент, заменяя текущий фрагмент</span><span class="s1"> 
+            FragmentManager fragmentManager = getSupportFragmentManager(); 
+ 
+            </span><span class="s0">if </span><span class="s1">(popFromBackStack) 
+                fragmentManager.popBackStack(); 
+            </span><span class="s2">//Fragment fragment_2 = fragmentManager.findFragmentById(R.id.container);</span><span class="s1"> 
+            </span><span class="s0">if </span><span class="s1">(stackName != </span><span class="s0">null</span><span class="s1">) { 
+                fragmentManager.beginTransaction().replace(container, fragment).addToBackStack(</span><span class="s3">&quot;myStack&quot;</span><span class="s1">).commit(); 
+            } </span><span class="s0">else</span><span class="s1"> 
+                fragmentManager.beginTransaction().replace(container, fragment).commit(); 
+ 
+        } </span><span class="s0">catch </span><span class="s1">(Exception e) { 
+            Log.e(</span><span class="s3">&quot;act_main&quot;</span><span class="s1">, </span><span class="s3">&quot;ошибка при выборе фрагмента в профиле:&quot;</span><span class="s1">); 
+            e.printStackTrace(); 
+        } 
+ 
+    } 
+}</span></pre>
+</body>
+</html>

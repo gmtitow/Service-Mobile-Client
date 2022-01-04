@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>-->
+    <color name="mainTheme">#e8e8e8</color>
+    <color name="mainThemeWithAlpha">#72000000</color>
+    <color name="Black">#000000</color>
+    <color name="White">#ffffff</color>
+    #
+        <color name="your_messages">#e0f7fa</color>
+        <color name="other_messages">#aed581</color>
+        <color name="primaryColor">#311b92</color>
+        <color name="primaryLightColor">#6746c3</color>
+        <color name="primaryDarkColor">#000063</color>
+        <color name="secondaryColor">#304ffe</color>
+        <color name="secondaryLightColor">#7a7cff</color>
+        <color name="secondaryDarkColor">#0026ca</color>
+        <color name="primaryTextColor">#ffffff</color>
+        <color name="secondaryTextColor">#ffffff</color>
+</resources>

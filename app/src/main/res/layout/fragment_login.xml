@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/container_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textLogin"
+                    style="@style/text_low_style"
+                    android:layout_marginStart="43dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_login" />
+
+                <EditText
+                    android:id="@+id/editLogin"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textPassword"
+                    style="@style/text_low_style"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="30dp"
+
+                    android:gravity="center"
+                    android:text="@string/text_password" />
+
+                <EditText
+                    android:id="@+id/editPassword"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/buttonLogin"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginTop="20dp"
+                    android:paddingStart="64dp"
+
+                    android:paddingEnd="64dp"
+
+                    android:text="@string/login_enter"
+                    android:textAllCaps="false" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/text_login_success"
+                style="@style/text_low_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="@string/login_ok"/>
+
+            <TextView
+                android:id="@+id/text_lost_connection"
+                style="@style/text_low_style"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/lost_connection"
+                android:textColor="#83130f"/>
+
+            <TextView
+                android:id="@+id/text_login_error"
+                style="@style/text_low_style"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/login_failed"
+                android:textColor="#83130f"/>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="36dp" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+</ScrollView>

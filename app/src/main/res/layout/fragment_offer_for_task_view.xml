@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_photo"
+            android:layout_width="114dp"
+            android:layout_height="109dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/text_fio"
+            style="@style/text_low_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="3"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/image_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Коробов Крутомир Васильевич" />
+
+        <TextView
+            android:id="@+id/text_count_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            tools:text="16 лет"
+            app:layout_constraintStart_toEndOf="@+id/image_photo"
+            app:layout_constraintTop_toBottomOf="@+id/text_fio" />
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        style="@style/layout_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_list_title_style"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="8dp"
+
+            android:text="@string/task_description_title" />
+
+        <TextView
+            android:id="@+id/text_description"
+            style="@style/text_list_style"
+            android:layout_width="match_parent"
+            tools:text = "Описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание, описание"
+            android:layout_marginEnd="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/text_list_title_style"
+            android:layout_width="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="2"
+
+            android:text="@string/task_deadline_title" />
+
+        <TextView
+            android:id="@+id/text_deadline"
+            style="@style/text_list_style"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/layout_list_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/text_list_title_style"
+            android:layout_width="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="2"
+
+            android:text="@string/task_price_title" />
+
+        <TextView
+            android:id="@+id/text_price"
+            style="@style/text_list_style"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_select_executor"
+        android:layout_marginTop="16dp"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text = "@string/offers_select_executor"/>
+
+
+
+</LinearLayout>
+</ScrollView>

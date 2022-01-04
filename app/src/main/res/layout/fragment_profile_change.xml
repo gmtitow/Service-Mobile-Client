@@ -1,0 +1,195 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        tools:context="ru.bstu.it41.service.profile.ProfileFragment">
+
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_photo"
+            android:layout_width="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_height="192dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/profile_photo"
+            android:src="@drawable/ic_menu_camera" />
+
+            <Button
+                android:id="@+id/buttonChangePhoto"
+                style="@style/button_style"
+                android:layout_width="wrap_content"
+
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_gravity="center"
+
+                android:text="@string/button_change_photo"
+                android:textAllCaps="false" />
+
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_firstname"
+                android:text="@string/text_profile_name" />
+
+            <EditText
+                android:id="@+id/edit_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_lastname"
+                android:text="@string/text_profile_lastname"/>
+
+            <EditText
+                android:id="@+id/edit_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_patronymic"
+                android:text="@string/text_profile_patronymic" />
+
+            <EditText
+                android:id="@+id/edit_patronymic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_birthday"
+                android:text="@string/text_profile_birthday" />
+
+            <Button
+                style="@android:style/Widget.EditText"
+                android:id="@+id/edit_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:inputType="none" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_male"
+                android:text="@string/text_profile_male" />
+
+            <Spinner
+                android:id="@+id/edit_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_list_style"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_list_style"
+                android:layout_width="match_parent"
+                android:layout_gravity="end"
+                android:gravity="start"
+                android:labelFor="@id/edit_address"
+                android:text="@string/text_profile_address" />
+
+            <EditText
+                android:id="@+id/edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLength="200"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSaveChanges"
+            style="@style/button_style"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/button_save_changes"
+            android:textAllCaps="false" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"
+            android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>

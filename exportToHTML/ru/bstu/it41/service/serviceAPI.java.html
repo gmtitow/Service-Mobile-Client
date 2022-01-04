@@ -1,0 +1,171 @@
+<html>
+<head>
+<title>serviceAPI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,0); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+serviceAPI.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">ru.bstu.it41.service; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.Date; 
+</span><span class="s0">import </span><span class="s1">java.util.List; 
+ 
+</span><span class="s0">import </span><span class="s1">okhttp3.MultipartBody; 
+</span><span class="s0">import </span><span class="s1">retrofit2.Call; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.DELETE; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.Field; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.FormUrlEncoded; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.GET; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.Multipart; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.POST; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.PUT; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.Part; 
+</span><span class="s0">import </span><span class="s1">retrofit2.http.Path; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.any.UserRequest; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.AllForUser; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.Category; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.OffersWithUserinfo; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.OtherTender; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.ResultAuthorizationInfo; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.ReviewAndUserinfo; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.Status; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.StatusTask; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.StatusTender; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.TaskAndTender; 
+</span><span class="s0">import </span><span class="s1">ru.bstu.it41.service.models.Tasks; 
+ 
+</span><span class="s2">/** 
+ * Created by NorD on 16.11.2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public interface </span><span class="s1">serviceAPI { 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_LOGIN + </span><span class="s3">&quot;?mobile&quot;</span><span class="s1">) 
+    Call&lt;Status&gt;loginTest(@Field(UserRequest.PARAM_EMAIL) String email, 
+                          @Field(UserRequest.PARAM_PASSWORD) String password); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_LOGIN) 
+    Call&lt;ResultAuthorizationInfo&gt;login(@Field(UserRequest.PARAM_EMAIL) String email, 
+                                       @Field(UserRequest.PARAM_PASSWORD) String password); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_REGISTER) 
+    Call&lt;Status&gt;register(@Field(UserRequest.PARAM_FIRSTNAME) String firstname, 
+                         @Field(UserRequest.PARAM_LASTNAME) String lastname, 
+                         @Field(UserRequest.PARAM_MALE) </span><span class="s0">byte </span><span class="s1">male, 
+                         @Field(UserRequest.PARAM_EMAIL) String email, 
+                         @Field(UserRequest.PARAM_TELEPHONE) String phone, 
+                         @Field(UserRequest.PARAM_PASSWORD) String password); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_REGISTER + </span><span class="s3">&quot;?mobile&quot;</span><span class="s1">) 
+    Call&lt;String&gt;registerTest(@Field(UserRequest.PARAM_FIRSTNAME) String firstname, 
+                         @Field(UserRequest.PARAM_LASTNAME) String lastname, 
+                         @Field(UserRequest.PARAM_MALE) </span><span class="s0">byte </span><span class="s1">male, 
+                         @Field(UserRequest.PARAM_EMAIL) String email, 
+                         @Field(UserRequest.PARAM_TELEPHONE) String phone, 
+                         @Field(UserRequest.PARAM_PASSWORD) String password); 
+ 
+    @GET(UserRequest.URL_PROFILE) 
+    Call&lt;AllForUser&gt; getProfileView(); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_PROFILE) 
+    Call&lt;Status&gt; changeProfileView(@Field(UserRequest.PARAM_FIRSTNAME) String firstname, 
+                                   @Field(UserRequest.PARAM_LASTNAME) String lastname, 
+                                   @Field(UserRequest.PARAM_PATRONYMIC) String patronymic, 
+                                   @Field(UserRequest.PARAM_BIRTHDAY) Date birthday, 
+                                   @Field(UserRequest.PARAM_MALE) </span><span class="s0">byte </span><span class="s1">male, 
+                                   @Field(UserRequest.PARAM_ADDRESS) String address); 
+ 
+    @GET(UserRequest.URL_REVIEWS) 
+    Call&lt;List&lt;ReviewAndUserinfo&gt;&gt; getReviews(@Path(UserRequest.PARAM_USER_ID) </span><span class="s0">int </span><span class="s1">userId); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_ABOUT) 
+    Call&lt;Status&gt; changeProfileAbout(@Field(UserRequest.PARAM_ABOUT) String about); 
+ 
+    @Multipart 
+    @POST(UserRequest.URL_LOAD_PHOTO) 
+    Call&lt;String&gt; loadPhoto(@Part() MultipartBody.Part file); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_SETTINGS) 
+    Call&lt;Status&gt; changeSettings(@Field(UserRequest.PARAM_NOTIFICATION_EMAIL) </span><span class="s0">byte </span><span class="s1">notifyEmail, 
+                                @Field(UserRequest.PARAM_NOTIFICATION_SMS) </span><span class="s0">byte </span><span class="s1">notifySms, 
+                                @Field(UserRequest.PARAM_NOTIFICATION_PUSH) </span><span class="s0">byte </span><span class="s1">notifyPush); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_LOGOUT) 
+    Call&lt;String&gt; logout(@Field(</span><span class="s3">&quot;mobile&quot;</span><span class="s1">) </span><span class="s0">int </span><span class="s1">mobile); 
+ 
+    @GET(UserRequest.URL_TENDERS) 
+    Call&lt;List&lt;OtherTender&gt;&gt; getTenders(); 
+ 
+    @GET(UserRequest.URL_TASKS) 
+    Call&lt;List&lt;TaskAndTender&gt;&gt; getTasks(); 
+ 
+    @GET(</span><span class="s3">&quot;/tasksAPI/getAllTasks&quot;</span><span class="s1">) 
+    Call&lt;List&lt;Tasks&gt;&gt; getAllTasksTest(); 
+ 
+    @FormUrlEncoded 
+    @PUT(UserRequest.URL_TASKS) 
+    Call&lt;StatusTask&gt; addTask(@Field(UserRequest.PARAM_NAME) String taskName, 
+                             @Field(UserRequest.PARAM_DESCRIPTION) String taskDescription, 
+                             @Field(UserRequest.PARAM_CATEGORY) </span><span class="s0">int </span><span class="s1">taskCategoryId, 
+                             @Field(UserRequest.PARAM_DEADLINE) Date taskDeadline, 
+                             @Field(UserRequest.PARAM_PRICE) </span><span class="s0">int </span><span class="s1">taskPrice, 
+                             @Field(UserRequest.PARAM_LATITUDE) Double latitude, 
+                             @Field(UserRequest.PARAM_LONGITUDE) Double longitude, 
+                             @Field(UserRequest.PARAM_ADDRESS) String address); 
+ 
+    @DELETE(UserRequest.URL_TASK_DELETE) 
+    Call&lt;Status&gt; deleteTask(@Path(UserRequest.PARAM_TASK_ID) </span><span class="s0">int </span><span class="s1">taskId); 
+ 
+    @FormUrlEncoded 
+    @POST(UserRequest.URL_TASK_CHANGE) 
+    Call&lt;Status&gt; changeTask(@Field(UserRequest.PARAM_TASK_ID) </span><span class="s0">int </span><span class="s1">taskId, 
+                            @Field(UserRequest.PARAM_NAME) String taskName, 
+                            @Field(UserRequest.PARAM_DESCRIPTION) String taskDescription, 
+                            @Field(UserRequest.PARAM_CATEGORY) </span><span class="s0">int </span><span class="s1">taskCategoryId, 
+                            @Field(UserRequest.PARAM_DEADLINE) Date taskDeadline, 
+                            @Field(UserRequest.PARAM_PRICE) </span><span class="s0">int </span><span class="s1">taskPrice); 
+ 
+    @FormUrlEncoded 
+    @PUT(UserRequest.URL_TENDERS) 
+    Call&lt;StatusTender&gt; addTender(@Field(UserRequest.PARAM_TASK_ID) </span><span class="s0">int </span><span class="s1">taskID, 
+                                 @Field(UserRequest.PARAM_DATE_END) Date tenderDateEnd); 
+ 
+    @DELETE(UserRequest.URL_TENDER_DELETE) 
+    Call&lt;Status&gt; deleteTender(@Path(UserRequest.PARAM_TENDER_ID) </span><span class="s0">int </span><span class="s1">tenderID); 
+ 
+    @POST(UserRequest.URL_CATEGORIES) 
+    Call&lt;List&lt;Category&gt;&gt; getCategories(); 
+ 
+    @GET(UserRequest.URL_OFFERS_FOR_TENDER) 
+    Call&lt;OffersWithUserinfo&gt; getOffers(@Path(UserRequest.PARAM_TENDER_ID) </span><span class="s0">int </span><span class="s1">tenderID); 
+ 
+    @FormUrlEncoded 
+    @PUT(UserRequest.URL_ADD_OFFER) 
+    Call&lt;Status&gt; addOffer(@Field(UserRequest.PARAM_TENDER_ID) </span><span class="s0">int </span><span class="s1">tenderID, 
+                                 @Field(UserRequest.PARAM_DEADLINE) Date deadline, 
+                          @Field(UserRequest.PARAM_PRICE) </span><span class="s0">int </span><span class="s1">price, 
+                          @Field(UserRequest.PARAM_DESCRIPTION) String description); 
+} 
+</span></pre>
+</body>
+</html>
